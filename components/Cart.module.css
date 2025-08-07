@@ -1,0 +1,67 @@
+/* components/Cart.module.css */
+
+/* Stili Desktop */
+.cartDesktopContainer {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+.cartDesktopButton {
+  padding: 0.5rem 1rem;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'MedievalSharp', sans-serif; /* Aggiunto il font */
+}
+
+.cartDesktopPopup {
+  position: absolute;
+  top: 2.5rem; /* Modifica: ridotto il valore per eliminare lo spazio */
+  right: 1rem;
+  width: 300px;
+  background-color: #1c1c1c;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 1rem;
+  z-index: 10;
+  color: #fff;
+  font-family: 'MedievalSharp', sans-serif; /* Aggiunto il font */
+}
+
+/* Stili Mobile */
+.cartMobileContainer {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  padding: 0;
+}
+
+.cartButtonMobile {
+  padding: 0.5rem 1rem;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'MedievalSharp', sans-serif; /* Aggiunto il font per coerenza */
+}
+
+.cartPopupMobile {
+  position: fixed;
+  top: 4rem;
+  right: 1rem;
+  width: calc(100% - 2rem);
+  max-width: 350px;
+  background-color: #1c1c1c;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 1rem;
+  z-index: 10;
+  color: #fff;
+  font-family: 'MedievalSharp', sans-serif; /* Aggiunto il font per coerenza */
+}

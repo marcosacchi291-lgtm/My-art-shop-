@@ -1,0 +1,15 @@
+/* pages/index.mobile.module.css */
+@media (max-width: 768px) {
+  .heroMobile {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .mainContentMobile {
+    flex-direction: column !important;
+  }
+  
+  .galleriaGridMobile {
+    grid-template-columns: 1fr !important;
+  }
+}

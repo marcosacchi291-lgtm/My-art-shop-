@@ -1,0 +1,218 @@
+/* pages/galleria/Galleria.module.css */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.backLink {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+  font-family: 'Pirata One', system-ui; /* MODIFICATO */
+}
+
+.backLink:hover {
+  color: #d62828;
+}
+
+.main {
+  padding: 2rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #ddd;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 0 2rem;
+  justify-items: center;
+}
+
+.gridItem {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  background-color: rgba(30, 30, 30, 0.8);
+  backdrop-filter: blur(3px);
+  transition: transform 0.3s ease;
+}
+
+.gridItem:hover {
+  transform: translateY(-5px);
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  cursor: pointer;
+}
+
+.image {
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.image:hover {
+  transform: scale(1.05);
+}
+
+.itemDetails {
+  padding: 1rem;
+  text-align: center;
+  color: #fff;
+}
+
+.itemTitle {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #fff;
+  text-shadow: 1px 1px 2px #000;
+  font-family: 'Pirata One', system-ui; /* MODIFICATO */
+}
+
+.itemPrice {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  text-shadow: 1px 1px 2px #000;
+  font-family: 'Pirata One', system-ui; /* MODIFICATO */
+}
+
+.addToCartButton {
+  background-color: #d62828;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Pirata One', system-ui; /* MODIFICATO */
+}
+
+.addToCartButton:hover {
+  background-color: #c42424;
+}
+
+/* Stili specifici per dispositivi mobili */
+@media (max-width: 768px) {
+  .main {
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .gridItem {
+    max-width: 100%;
+  }
+
+  .gridItem .itemDetails {
+    display: block !important;
+    position: static;
+    background: rgba(30, 30, 30, 0.8);
+    pointer-events: auto;
+  }
+}
+
+/* Stili per DESKTOP: si attivano su schermi più grandi di 768px */
+@media (min-width: 769px) {
+  .itemDetails {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .gridItem:hover .itemDetails {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Stili per la modale */
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85); /* Qui definisci il colore e la trasparenza dell'overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Assicura che sia sopra a tutto */
+}
+
+.modalContent {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  z-index: 1001;
+}
+
+.closeButton:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}

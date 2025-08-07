@@ -1,0 +1,174 @@
+/* pages/checkout/Checkout.module.css */
+.checkoutContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  color: #fff;
+  /* Stili per l'immagine di sfondo */
+  background-image: url('/new-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  /* Rimosso font-family: 'MedievalSharp', sans-serif; */
+  z-index: 0;
+}
+
+/* L'overlay semi-trasparente */
+.checkoutContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Overlay nero al 40% di opacità */
+  z-index: 1;
+}
+
+.backLink {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+  font-family: 'Pirata One', system-ui; /* MODIFICATO */
+  align-self: flex-start;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.backLink:hover {
+  color: #d62828;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  font-family: 'Pirata One', system-ui; /* MODIFICATO */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 2;
+}
+
+.contentWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.orderSummary,
+.paymentForm {
+  width: 45%;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-family: 'Pirata One', system-ui; /* MODIFICATO: applicato qui per l'ereditarietà */
+}
+
+.orderSummary h2,
+.paymentForm h2 {
+  font-family: 'Pirata One', system-ui; /* MODIFICATO */
+  font-size: 2rem;
+}
+
+.cartList {
+  list-style: none;
+  padding: 0;
+}
+
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.5rem;
+}
+
+.cartItem span {
+  font-size: 1.2rem;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.quantityButton {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.2rem;
+  font-family: 'Pirata One', system-ui; /* MODIFICATO */
+}
+
+.total {
+  border-top: 1px solid #444;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.paymentForm label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: 'Pirata One', system-ui; /* MODIFICATO */
+}
+
+.paymentForm input,
+.paymentForm select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background-color: #333;
+  color: #fff;
+  font-family: 'Pirata One', system-ui; /* MODIFICATO */
+}
+
+.confirmButton {
+  width: 100%;
+  padding: 1rem;
+  background-color: #d62828;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-family: 'Pirata One', system-ui; /* MODIFICATO */
+}
+
+/* Stili specifici per dispositivi mobili */
+@media (max-width: 768px) {
+  .checkoutContainer {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .contentWrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .orderSummary,
+  .paymentForm {
+    width: 100%;
+  }
+}
