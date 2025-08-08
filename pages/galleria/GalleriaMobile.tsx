@@ -1,7 +1,4 @@
-// pages/galleria/GalleriaMobile.tsx
-
 'use client';
-
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -12,14 +9,13 @@ import { gallerie } from '../data/gallerie';
 import Link from 'next/link';
 import CartMobile from '../../components/Cart';
 import { useState } from 'react';
-import ImageModal from '../../components/ImageModal';
 
 const medieval = MedievalSharp({
   subsets: ['latin'],
   weight: '400',
 });
 
-const GalleriaMobile = () => {
+const Galleria = () => {
   const router = useRouter();
   const { slug } = router.query;
   const { addToCart } = useCart();
@@ -45,7 +41,7 @@ const GalleriaMobile = () => {
       </header>
       <main className={styles.main}>
         <h1 className={`${medieval.className} ${styles.title}`}>{galleria.nome}</h1>
-        <p className={styles.description}>{galleria.descrizione}</p>
+        <p className={styles.description}>{galleria.description}</p>
         <div className={styles.grid}>
           {galleria.immaginiGalleria.map((item) => (
             <div
@@ -54,13 +50,13 @@ const GalleriaMobile = () => {
             >
               <div
                 className={styles.imageContainer}
-                onClick={() => setModalImage(item.url)} // Il click sull'immagine apre il modale
+                onClick={() => setModalImage(item.url)}
               >
                 <Image
                   src={item.url}
                   alt={item.title}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: 'cover' }}
                   className={styles.image}
                 />
               </div>
@@ -68,7 +64,7 @@ const GalleriaMobile = () => {
                 <h2 className={styles.itemTitle}>{item.title}</h2>
                 <p className={styles.itemPrice}>€{item.price.toFixed(2)}</p>
                 <button
-                  onClick={() => addToCart({ ...item, quantity: 1, title: item.title, price: item.price })}
+                  onClick={() => addToCart(item)}
                   className={styles.addToCartButton}
                 >
                   Aggiungi al carrello
@@ -79,9 +75,24 @@ const GalleriaMobile = () => {
         </div>
       </main>
 
-      {modalImage && <ImageModal imageUrl={modalImage} onClose={() => setModalImage(null)} />}
+      {/* La modale è qui, come nella versione desktop */}
+      {modalImage && (
+        <div className={styles.modalBackdrop} onClick={() => setModalImage(null)}>
+          <div 
+            className={styles.modalContent} 
+            onClick={(e) => e.stopPropagation()} 
+          >
+            <Image 
+              src={modalImage} 
+              alt="Immagine ingrandita" 
+              fill 
+              style={{ objectFit: 'contain' }} 
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 };
 
-export default GalleriaMobile;
+export default Galleria;
