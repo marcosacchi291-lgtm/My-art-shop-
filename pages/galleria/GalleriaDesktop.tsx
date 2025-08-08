@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useCart } from '../../context/CartContext';
 import styles from './Galleria.module.css';
 import { MedievalSharp } from 'next/font/google';
-import  gallerie from '../data/gallerie';
+import gallerie from '../data/gallerie';
 import Link from 'next/link';
 import CartDesktop from '../../components/CartDesktop';
 import { useState } from 'react';
@@ -78,15 +78,15 @@ const Galleria = () => {
       {/* La modale è qui, senza un componente separato */}
       {modalImage && (
         <div className={styles.modalBackdrop} onClick={() => setModalImage(null)}>
-          <div 
-            className={styles.modalContent} 
-            onClick={(e) => e.stopPropagation()} 
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
           >
-            <Image 
-              src={modalImage} 
-              alt="Immagine ingrandita" 
-              fill 
-              style={{ objectFit: 'contain' }} 
+            <Image
+              src={modalImage}
+              alt="Immagine ingrandita"
+              fill
+              style={{ objectFit: 'contain' }}
             />
           </div>
         </div>
