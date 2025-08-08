@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { motion, useMotionValue } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
-import { gallerie } from './data/gallerie';
+import gallerie  from './data/gallerie';
 import Cart from '../components/Cart';
 import mobileStyles from './index.mobile.module.css';
 
