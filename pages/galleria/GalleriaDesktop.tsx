@@ -64,7 +64,7 @@ const Galleria = () => {
                 <h2 className={styles.itemTitle}>{item.title}</h2>
                 <p className={styles.itemPrice}>€{item.price.toFixed(2)}</p>
                 <button
-                  onClick={() => addToCart({ ...item, quantity: 1, title: item.title, price: item.price })}
+                  onClick={() => addToCart(item)}
                   className={styles.addToCartButton}
                 >
                   Aggiungi al carrello
