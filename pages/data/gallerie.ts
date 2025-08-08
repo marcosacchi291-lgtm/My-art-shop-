@@ -4,6 +4,7 @@ export const gallerie = [
   {
     slug: 'tradizionale',
     nome: 'Stile Tradizionale',
+    description: 'Linee audaci e colori vivaci. Un omaggio all\'arte classica del tatuaggio americano.',
     immagineCarosello: '/images/carosello-tradizionale.jpg',
     immaginiGalleria: [
       { 
@@ -56,7 +57,6 @@ export const gallerie = [
       },
       { 
         id: 'tradizionale-7', 
-        title: 'Traditional piece 7', 
         price: 29.00, 
         url: '/images/tradizionale/7.jpg',
         alt: 'Tatuaggio tradizionale',
@@ -67,6 +67,7 @@ export const gallerie = [
   {
     slug: 'giapponese',
     nome: 'Stile Giapponese',
+    description: 'Design elegante che cattura l\'essenza della cultura e della mitologia giapponese.',
     immagineCarosello: '/images/carosello-giapponese.jpg',
     immaginiGalleria: [
       { 
@@ -103,7 +104,6 @@ export const gallerie = [
       },
       { 
         id: 'giapponese-5', 
-        title: 'Japanese piece 5', 
         price: 60.00, 
         url: '/images/giapponese/5.jpg',
         alt: 'Tatuaggio giapponese',
@@ -130,6 +130,7 @@ export const gallerie = [
   {
     slug: 'blackwork',
     nome: 'Blackwork',
+    description: 'L\'eleganza del nero. Stile minimalista o geometrico per un impatto visivo forte e deciso.',
     immagineCarosello: '/images/carosello-blackwork.jpg',
     immaginiGalleria: [
       { 
@@ -185,6 +186,7 @@ export const gallerie = [
   {
     slug: 'fineline',
     nome: 'Fineline',
+    description: 'L\'arte della precisione. Linee sottili ed eleganti per disegni raffinati e dettagliati.',
     immagineCarosello: '/images/carosello-fineline.jpg',
     immaginiGalleria: [
       { 
@@ -197,7 +199,6 @@ export const gallerie = [
       },
       { 
         id: 'fineline-2', 
-        title: 'Fineline piece 2', 
         price: 20.50, 
         url: '/images/fineline/2.jpg', 
         alt: 'Tatuaggio fineline',
@@ -240,6 +241,7 @@ export const gallerie = [
   {
     slug: 'floreale',
     nome: 'Tatuaggio Floreale',
+    description: 'La natura si fa arte. Disegni floreali delicati e dettagliati per un tocco di eleganza.',
     immagineCarosello: '/images/carosello-floreale.jpg',
     immaginiGalleria: [
       { 
@@ -268,7 +270,6 @@ export const gallerie = [
       },
       { 
         id: 'floreale-4', 
-        title: 'Floral piece 4', 
         price: 35.00, 
         url: '/images/floreale/4.jpg',
         alt: 'Tatuaggio floreale',
