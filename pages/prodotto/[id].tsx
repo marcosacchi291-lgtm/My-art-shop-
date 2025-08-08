@@ -6,7 +6,7 @@ import Cart from '../../components/CartDesktop';
 import { useCart } from '../../context/CartContext';
 
 // Importa i dati delle gallerie
-import gallerie from './../data/gallerie';
+import gallerie from '../../data/gallerie';
 
 const medieval = MedievalSharp({
   subsets: ['latin'],

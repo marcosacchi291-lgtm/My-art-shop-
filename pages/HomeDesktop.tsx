@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
 import Cart from '../components/CartDesktop';
-import gallerie from './data/gallerie'; // Modificato qui
+import gallerie from '../data/gallerie'; // Modificato qui
 
 const Home = () => {
   const validGalleries = gallerie || [];

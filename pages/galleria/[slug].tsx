@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useCart } from '../../context/CartContext';
 import styles from './Galleria.module.css';
 import { MedievalSharp } from 'next/font/google'; // Ho aggiunto questa riga
-import gallerie from '../data/gallerie'; // MODIFICATO QUI
+import gallerie from '../../data/gallerie'; // MODIFICATO QUI
 import Link from 'next/link';
 import CartDesktop from '../../components/CartDesktop';
 import { useState } from 'react';
