@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
 import Cart from '../components/CartDesktop';
-import { gallerie } from './data/gallerie';
+import gallerie from './data/gallerie'; // Modificato qui
 
 const Home = () => {
   const validGalleries = gallerie || [];
@@ -72,7 +72,7 @@ const Home = () => {
               Digital arts for sad people made by a sad guy.
             </p>
           </div>
-          
+
           {/* Navigazione */}
           <nav style={{ padding: '1rem 0', width: '100%', textAlign: 'center', display: 'flex', justifyContent: 'center', gap: '1rem', backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
             <Link href="/disegni-su-richiesta" style={{ color: '#fff', textDecoration: 'none', fontSize: '1.5rem' }}>
@@ -85,7 +85,7 @@ const Home = () => {
             <h2 style={{ color: '#fff', fontSize: '2rem', marginBottom: '2rem', textAlign: 'center' }}>
               Gallerie
             </h2>
-            
+
             <div style={{
               display: 'flex',
               gap: '1rem',
