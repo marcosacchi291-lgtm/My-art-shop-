@@ -1,4 +1,3 @@
-// pages/galleria/GalleriaDesktop.tsx
 'use client';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -42,7 +41,7 @@ const Galleria = () => {
       </header>
       <main className={styles.main}>
         <h1 className={`${medieval.className} ${styles.title}`}>{galleria.nome}</h1>
-        <p className={styles.description}>{galleria.descrizione}</p>
+        <p className={styles.description}>{galleria.description}</p>
         <div className={styles.grid}>
           {galleria.immaginiGalleria.map((item) => (
             <div
