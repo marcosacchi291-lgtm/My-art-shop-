@@ -1,14 +1,19 @@
-// pages/galleria/[slug].tsx
 'use client';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useCart } from '../../context/CartContext';
 import styles from './Galleria.module.css';
+import { MedievalSharp } from 'next/font/google'; // Ho aggiunto questa riga
 import { gallerie } from '../data/gallerie';
 import Link from 'next/link';
 import CartDesktop from '../../components/CartDesktop';
 import { useState } from 'react';
+
+const medieval = MedievalSharp({
+  subsets: ['latin'],
+  weight: '400',
+});
 
 const Galleria = () => {
   const router = useRouter();
@@ -35,8 +40,8 @@ const Galleria = () => {
         <CartDesktop />
       </header>
       <main className={styles.main}>
-        <h1 className={styles.title}>{galleria.nome}</h1>
-        <p className={styles.description}>{galleria.descrizione}</p>
+        <h1 className={`${medieval.className} ${styles.title}`}>{galleria.nome}</h1>
+        <p className={styles.description}>{galleria.description}</p>
         <div className={styles.grid}>
           {galleria.immaginiGalleria.map((item) => (
             <div
@@ -59,7 +64,7 @@ const Galleria = () => {
                 <h2 className={styles.itemTitle}>{item.title}</h2>
                 <p className={styles.itemPrice}>€{item.price.toFixed(2)}</p>
                 <button
-                  onClick={() => addToCart({ ...item, quantity: 1, title: item.title, price: item.price })}
+                  onClick={() => addToCart(item)}
                   className={styles.addToCartButton}
                 >
                   Aggiungi al carrello
