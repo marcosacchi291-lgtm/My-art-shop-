@@ -127,7 +127,7 @@
   .main {
     padding: 1rem;
   }
-  
+
   .title {
     font-size: 2.5rem;
   }
@@ -161,25 +161,26 @@
     opacity: 0;
     pointer-events: none;
   }
-  
+
   .gridItem:hover .itemDetails {
     opacity: 1;
     pointer-events: auto;
   }
 }
 
-/* Stili per la modale */
+/* --- Stili per la modale --- */
+
 .modalBackdrop {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.85); /* Qui definisci il colore e la trasparenza dell'overlay */
+  background: rgba(0, 0, 0, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000; /* Assicura che sia sopra a tutto */
+  z-index: 1000;
 }
 
 .modalContent {
@@ -215,4 +216,96 @@
 
 .closeButton:hover {
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* AGGIUNTA - Stili per il contenuto della modale (griglia) */
+.modalGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  background-color: rgba(30, 30, 30, 0.9);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+  max-width: 1200px; /* Larghezza massima per desktop */
+}
+
+@media (max-width: 768px) {
+  .modalGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+}
+
+.modalImageWrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* Rapporto d'aspetto 1:1, puoi cambiarlo */
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .modalImageWrapper {
+    height: auto;
+    padding-top: 75%; /* Rapporto d'aspetto 4:3 per dispositivi mobili */
+  }
+}
+
+.modalImageWrapper img {
+  border-radius: 10px;
+}
+
+.modalDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .modalDetails {
+    text-align: center;
+  }
+}
+
+.modalTitle {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Pirata One', system-ui;
+}
+
+.modalDescription {
+  font-size: 1.1rem;
+  color: #ddd;
+  margin-bottom: 1rem;
+}
+
+.modalPrice {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  font-family: 'Pirata One', system-ui;
+}
+
+.modalAddToCartButton {
+  background-color: #d62828;
+  color: #fff;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Pirata One', system-ui;
+}
+
+.modalAddToCartButton:hover {
+  background-color: #c42424;
 }

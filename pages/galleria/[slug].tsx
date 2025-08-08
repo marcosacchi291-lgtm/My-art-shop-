@@ -1,11 +1,12 @@
 'use client';
-import { useRouter } from 'next/router';
+
+import { useParams } from 'next/navigation';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useCart } from '../../context/CartContext';
 import styles from './Galleria.module.css';
-import { MedievalSharp } from 'next/font/google'; // Ho aggiunto questa riga
-import gallerie from '../../data/gallerie'; // MODIFICATO QUI
+import { MedievalSharp } from 'next/font/google';
+import gallerie from '../../data/gallerie';
 import Link from 'next/link';
 import CartDesktop from '../../components/CartDesktop';
 import { useState } from 'react';
@@ -16,11 +17,10 @@ const medieval = MedievalSharp({
 });
 
 const Galleria = () => {
-  const router = useRouter();
-  const { slug } = router.query;
+  const { slug } = useParams();
   const { addToCart } = useCart();
   const galleria = gallerie.find((g) => g.slug === slug);
-  const [modalImage, setModalImage] = useState<string | null>(null);
+  const [modalProduct, setModalProduct] = useState(null);
 
   if (!galleria || !galleria.immaginiGalleria) {
     return (
@@ -50,7 +50,7 @@ const Galleria = () => {
             >
               <div
                 className={styles.imageContainer}
-                onClick={() => setModalImage(item.url)}
+                onClick={() => setModalProduct(item)}
               >
                 <Image
                   src={item.url}
@@ -75,20 +75,33 @@ const Galleria = () => {
         </div>
       </main>
 
-      {/* La modale è qui, integrata nel componente principale */}
-      {modalImage && (
-        <div className={styles.modalBackdrop} onClick={() => setModalImage(null)}>
-          <div
-            className={styles.modalContent}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              src={modalImage}
-              alt="Immagine ingrandita"
-              fill
-              style={{ objectFit: 'contain' }}
-            />
-            <button className={styles.closeButton} onClick={() => setModalImage(null)}>&times;</button>
+      {modalProduct && (
+        <div className={styles.modalBackdrop} onClick={() => setModalProduct(null)}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.closeButton} onClick={() => setModalProduct(null)}>&times;</button>
+            
+            <div className={styles.modalGrid}>
+              <div className={styles.modalImageWrapper}>
+                <Image
+                  src={modalProduct.url}
+                  alt={modalProduct.title}
+                  fill
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+
+              <div className={styles.modalDetails}>
+                <h2 className={styles.modalTitle}>{modalProduct.title}</h2>
+                <p className={styles.modalDescription}>{modalProduct.description}</p>
+                <p className={styles.modalPrice}>€{modalProduct.price.toFixed(2)}</p>
+                <button
+                  onClick={() => addToCart(modalProduct)}
+                  className={styles.modalAddToCartButton}
+                >
+                  Aggiungi al carrello
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}

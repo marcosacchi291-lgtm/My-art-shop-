@@ -85,7 +85,6 @@
   padding: 1rem;
   text-align: center;
   color: #fff;
-  /* Assicurati che non ci siano display: none o visibility: hidden qui */
 }
 
 .itemTitle {
@@ -100,7 +99,7 @@
 }
 
 .addToCartButton {
-  background-color: #ff4500;
+  background-color: #d62828;
   color: #fff;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -115,7 +114,109 @@
   background-color: #e04a4a;
 }
 
-/* Stili specifici per dispositivi mobili */
+/* --- NUOVI STILI PER LA MODALE --- */
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  backdrop-filter: blur(5px);
+}
+
+.modalContent {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  height: 90%;
+  max-height: 90vh;
+  background: #1a1a1a;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 102; /* Assicurati che il bottone sia in cima */
+}
+
+.modalGrid {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.modalImageWrapper {
+  position: relative;
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Un z-index più basso per l'immagine */
+}
+
+.modalDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  text-align: left;
+  z-index: 2; /* Un z-index più alto per i dettagli */
+}
+
+.modalTitle {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.modalDescription {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #ccc;
+}
+
+.modalPrice {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #d62828;
+  margin-bottom: 1.5rem;
+}
+
+.modalAddToCartButton {
+  background-color: #ff4500;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.2s ease;
+}
+
+.modalAddToCartButton:hover {
+  background-color: #e04a4a;
+}
+
+/* Adattamento per dispositivi mobili */
 @media (max-width: 768px) {
   .main {
     padding: 1rem;
@@ -135,8 +236,38 @@
     max-width: 100%;
   }
 
-  /* Rendi i dettagli sempre visibili su mobile */
   .gridItem .itemDetails {
     display: block;
+  }
+  
+  /* Stili modale per mobile */
+  .modalContent {
+    width: 95%;
+    max-width: none;
+    height: 95%;
+    max-height: none;
+  }
+  
+  .modalGrid {
+    /* Modifica cruciale per i dettagli */
+    flex-direction: column; 
+    padding: 1rem;
+    overflow-y: auto;
+    /* Ho aggiunto un display:flex anche qui per evitare che i dettagli spariscano */
+    display: flex; 
+  }
+  
+  .modalImageWrapper {
+    height: 60%;
+    flex: none;
+  }
+  
+  .modalDetails {
+    flex: none;
+    text-align: center;
+    /* Ho aggiunto un display:flex per risolvere il problema */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }

@@ -29,7 +29,7 @@ const HomeMobile = () => {
 
   const cardWidth = 260;
   const gap = 16;
-  const validGalleries = gallerie || [];
+  const validGalleries = gallerie || [];  
   const offset = windowWidth / 2 - cardWidth / 2;
 
   const carouselX = useMotionValue(-currentIndex * (cardWidth + gap) + offset);
