@@ -8,7 +8,7 @@ import { gallerie } from './data/gallerie';
 
 const Home = () => {
   const validGalleries = gallerie || [];
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null); // RIGA MODIFICATA
 
   return (
     <>
@@ -55,7 +55,7 @@ const Home = () => {
             style={{
               position: 'relative',
               width: '100%',
-              height: '70vh', // <-- MODIFICATO: Altezza ridotta per meno spazio
+              height: '70vh',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
@@ -78,7 +78,6 @@ const Home = () => {
             <Link href="/disegni-su-richiesta" style={{ color: '#fff', textDecoration: 'none', fontSize: '1.5rem' }}>
               Disegni su Richiesta
             </Link>
-          
           </nav>
 
           {/* --- Carosello Gallerie --- */}
