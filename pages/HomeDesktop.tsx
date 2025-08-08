@@ -8,7 +8,7 @@ import { gallerie } from './data/gallerie';
 
 const Home = () => {
   const validGalleries = gallerie || [];
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null); // RIGA MODIFICATA
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <>
@@ -107,7 +107,6 @@ const Home = () => {
                     borderRadius: '10px',
                     overflow: 'hidden',
                     position: 'relative',
-                    boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
                     transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
                     transform: hoveredIndex === index ? 'scale(1.05)' : 'scale(1)',
                     boxShadow: hoveredIndex === index ? '0 8px 30px rgba(0,0,0,0.5)' : '0 4px 15px rgba(0,0,0,0.3)',
