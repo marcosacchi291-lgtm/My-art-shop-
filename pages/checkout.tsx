@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { MedievalSharp } from 'next/font/google';
 import { useCart } from '../context/CartContext';
 import styles from './Checkout.module.css';
+import Header from '../components/Header'; // Importa il nuovo Header
 
 const medieval = MedievalSharp({
   subsets: ['latin'],
@@ -21,11 +22,9 @@ const CheckoutPage = () => {
         <title>Checkout | Trieste Sadness Digital Arts Shop</title>
       </Head>
       
-      <main className={styles.checkoutContainer}>
-        <Link href="/" className={styles.backLink}>
-          &larr; Torna alla Home
-        </Link>
-        
+      <Header />
+      
+      <main className={styles.checkoutContainer} style={{ paddingTop: '6rem' }}>
         <h1 className={`${medieval.className} ${styles.title}`}>Checkout</h1>
         
         <div className={styles.contentWrapper}>

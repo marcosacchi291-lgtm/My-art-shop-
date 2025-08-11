@@ -1,5 +1,5 @@
 // pages/_app.tsx
-import type { AppProps } from 'next/app';
+import { AppProps } from 'next/app';
 import { CartProvider } from '../context/CartContext';
 import '../styles/globals.css';
 

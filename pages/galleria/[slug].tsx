@@ -1,27 +1,27 @@
+// pages/galleria/[slug].tsx
 'use client';
 
-import { useParams } from 'next/navigation';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useCart } from '../../context/CartContext';
 import styles from './Galleria.module.css';
-import { MedievalSharp } from 'next/font/google';
 import gallerie from '../../data/gallerie';
 import Link from 'next/link';
-import CartDesktop from '../../components/CartDesktop';
+import Header from '../../components/Header';
 import { useState } from 'react';
 
-const medieval = MedievalSharp({
-  subsets: ['latin'],
-  weight: '400',
-});
-
 const Galleria = () => {
-  const { slug } = useParams();
+  const router = useRouter();
+  const { slug } = router.query;
   const { addToCart } = useCart();
   const galleria = gallerie.find((g) => g.slug === slug);
   const [modalProduct, setModalProduct] = useState(null);
 
+  if (!slug) {
+    return null;
+  }
+  
   if (!galleria || !galleria.immaginiGalleria) {
     return (
       <div style={{ padding: '4rem', textAlign: 'center', color: 'white' }}>
@@ -30,17 +30,21 @@ const Galleria = () => {
     );
   }
 
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    setModalProduct(null); 
+  };
+
   return (
     <>
       <Head>
         <title>{galleria.nome} - Trieste Sadness Digital Arts Shop</title>
       </Head>
-      <header className={styles.header}>
-        <Link href="/" className={styles.backLink}>&larr; Torna alla Home</Link>
-        <CartDesktop />
-      </header>
-      <main className={styles.main}>
-        <h1 className={`${medieval.className} ${styles.title}`}>{galleria.nome}</h1>
+      
+      <Header />
+
+      <main className={styles.main} style={{ paddingTop: '6rem' }}>
+        <h1 className={styles.title}>{galleria.nome}</h1>
         <p className={styles.description}>{galleria.description}</p>
         <div className={styles.grid}>
           {galleria.immaginiGalleria.map((item) => (
@@ -95,7 +99,7 @@ const Galleria = () => {
                 <p className={styles.modalDescription}>{modalProduct.description}</p>
                 <p className={styles.modalPrice}>€{modalProduct.price.toFixed(2)}</p>
                 <button
-                  onClick={() => addToCart(modalProduct)}
+                  onClick={() => handleAddToCart(modalProduct)}
                   className={styles.modalAddToCartButton}
                 >
                   Aggiungi al carrello

@@ -4,16 +4,10 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useCart } from '../../context/CartContext';
 import styles from './Galleria.module.css';
-import { MedievalSharp } from 'next/font/google';
 import gallerie from '../../data/gallerie';
 import Link from 'next/link';
 import CartDesktop from '../../components/CartDesktop';
 import { useState } from 'react';
-
-const medieval = MedievalSharp({
-  subsets: ['latin'],
-  weight: '400',
-});
 
 const Galleria = () => {
   const router = useRouter();
@@ -40,7 +34,7 @@ const Galleria = () => {
         <CartDesktop />
       </header>
       <main className={styles.main}>
-        <h1 className={`${medieval.className} ${styles.title}`}>{galleria.nome}</h1>
+        <h1 className={styles.title}>{galleria.nome}</h1>
         <p className={styles.description}>{galleria.description}</p>
         <div className={styles.grid}>
           {galleria.immaginiGalleria.map((item) => (

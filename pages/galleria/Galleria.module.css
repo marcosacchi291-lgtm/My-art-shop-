@@ -1,5 +1,6 @@
 /* pages/galleria/Galleria.module.css */
 
+/* Stili comuni per tutta la pagina */
 .header {
   display: flex;
   justify-content: space-between;
@@ -17,7 +18,6 @@
   text-decoration: none;
   font-size: 1.5rem;
   transition: color 0.3s;
-  font-family: 'Pirata One', system-ui; /* MODIFICATO */
 }
 
 .backLink:hover {
@@ -34,6 +34,8 @@
   margin-bottom: 0.5rem;
   color: #fff;
   text-shadow: 2px 2px 4px #000;
+  /* La riga qui sotto è stata aggiunta per risolvere il problema */
+  font-family: 'Pirata One', system-ui;
 }
 
 .description {
@@ -93,7 +95,7 @@
   margin: 0;
   color: #fff;
   text-shadow: 1px 1px 2px #000;
-  font-family: 'Pirata One', system-ui; /* MODIFICATO */
+  font-family: 'Pirata One', system-ui;
 }
 
 .itemPrice {
@@ -102,7 +104,7 @@
   font-weight: bold;
   margin: 0.5rem 0;
   text-shadow: 1px 1px 2px #000;
-  font-family: 'Pirata One', system-ui; /* MODIFICATO */
+  font-family: 'Pirata One', system-ui;
 }
 
 .addToCartButton {
@@ -115,39 +117,11 @@
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
-  font-family: 'Pirata One', system-ui; /* MODIFICATO */
+  font-family: 'Pirata One', system-ui;
 }
 
 .addToCartButton:hover {
   background-color: #c42424;
-}
-
-/* Stili specifici per dispositivi mobili */
-@media (max-width: 768px) {
-  .main {
-    padding: 1rem;
-  }
-
-  .title {
-    font-size: 2.5rem;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 0 1rem;
-  }
-
-  .gridItem {
-    max-width: 100%;
-  }
-
-  .gridItem .itemDetails {
-    display: block !important;
-    position: static;
-    background: rgba(30, 30, 30, 0.8);
-    pointer-events: auto;
-  }
 }
 
 /* Stili per DESKTOP: si attivano su schermi più grandi di 768px */
@@ -169,7 +143,6 @@
 }
 
 /* --- Stili per la modale --- */
-
 .modalBackdrop {
   position: fixed;
   top: 0;
@@ -218,7 +191,6 @@
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-/* AGGIUNTA - Stili per il contenuto della modale (griglia) */
 .modalGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -227,32 +199,15 @@
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
-  max-width: 1200px; /* Larghezza massima per desktop */
-}
-
-@media (max-width: 768px) {
-  .modalGrid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem;
-    max-height: 95vh;
-    overflow-y: auto;
-  }
+  max-width: 1200px;
 }
 
 .modalImageWrapper {
   position: relative;
   width: 100%;
-  padding-top: 100%; /* Rapporto d'aspetto 1:1, puoi cambiarlo */
+  padding-top: 100%;
   border-radius: 10px;
   overflow: hidden;
-}
-
-@media (max-width: 768px) {
-  .modalImageWrapper {
-    height: auto;
-    padding-top: 75%; /* Rapporto d'aspetto 4:3 per dispositivi mobili */
-  }
 }
 
 .modalImageWrapper img {
@@ -265,12 +220,6 @@
   justify-content: center;
   color: #fff;
   text-align: left;
-}
-
-@media (max-width: 768px) {
-  .modalDetails {
-    text-align: center;
-  }
 }
 
 .modalTitle {
@@ -308,4 +257,153 @@
 
 .modalAddToCartButton:hover {
   background-color: #c42424;
+}
+
+/* Stili specifici per dispositivi mobili */
+@media (max-width: 768px) {
+  .main {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    /* La riga qui sotto è stata aggiunta per risolvere il problema */
+    font-family: 'Pirata One', system-ui;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .gridItem {
+    max-width: 100%;
+  }
+
+  .gridItem .itemDetails {
+    display: block;
+    position: static;
+    background: rgba(30, 30, 30, 0.8);
+    pointer-events: auto;
+  }
+
+  .modalContent {
+    width: 95%;
+    max-width: none;
+    height: 95%;
+    max-height: none;
+  }
+
+  .modalGrid {
+    flex-direction: column;
+    padding: 1rem;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+
+  .modalImageWrapper {
+    height: auto;
+    padding-top: 75%;
+  }
+
+  .modalDetails {
+    text-align: center;
+  }
+
+  /* MODIFICA: Stili del carrello mobile per la galleria */
+  .cartMobileOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 101; /* Assicurati che sia sopra l'header */
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .cartMobilePanel {
+    width: 85%;
+    max-width: 400px;
+    height: 100%;
+    background-color: #1c1c1c;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .cartMobileHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #444;
+  }
+
+  .closeMobileCartButton {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .cartListMobile {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+
+  .cartItemMobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #444;
+  }
+
+  .quantityControlsMobile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .quantityControlsMobile button {
+    background: none;
+    border: none;
+    color: #fff;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .totalMobile {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid #444;
+    font-weight: bold;
+  }
+
+  .checkoutButtonMobile {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #d62828;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+  }
 }

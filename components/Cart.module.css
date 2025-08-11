@@ -1,67 +1,72 @@
 /* components/Cart.module.css */
 
-/* Stili Desktop */
-.cartDesktopContainer {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 10;
-}
-
-.cartDesktopButton {
+/* Stili comuni del bottone */
+.cartButton {
   padding: 0.5rem 1rem;
   background-color: #333;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-family: 'MedievalSharp', sans-serif; /* Aggiunto il font */
+}
+
+/* --- Stili Carrello --- */
+.cartDesktopContainer {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10000;
 }
 
 .cartDesktopPopup {
   position: absolute;
-  top: 2.5rem; /* Modifica: ridotto il valore per eliminare lo spazio */
+  top: 2.5rem;
   right: 1rem;
   width: 300px;
   background-color: #1c1c1c;
   border: 1px solid #444;
   border-radius: 8px;
   padding: 1rem;
-  z-index: 10;
+  z-index: 10000;
   color: #fff;
-  font-family: 'MedievalSharp', sans-serif; /* Aggiunto il font */
 }
 
-/* Stili Mobile */
-.cartMobileContainer {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 10;
+/* Stili lista carrello desktop */
+.cartListDesktop {
+  list-style: none;
   padding: 0;
 }
 
-.cartButtonMobile {
-  padding: 0.5rem 1rem;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: 'MedievalSharp', sans-serif; /* Aggiunto il font per coerenza */
+.cartItemDesktop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #444;
+  padding: 0.5rem 0;
 }
 
-.cartPopupMobile {
-  position: fixed;
-  top: 4rem;
-  right: 1rem;
-  width: calc(100% - 2rem);
-  max-width: 350px;
-  background-color: #1c1c1c;
-  border: 1px solid #444;
-  border-radius: 8px;
-  padding: 1rem;
-  z-index: 10;
+.quantityControlsDesktop {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.totalDesktop {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.checkoutButton {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #d62828;
   color: #fff;
-  font-family: 'MedievalSharp', sans-serif; /* Aggiunto il font per coerenza */
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 1rem;
+  text-decoration: none;
+  font-weight: bold;
 }

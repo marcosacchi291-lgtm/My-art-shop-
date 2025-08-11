@@ -38,8 +38,8 @@
     padding-left: 1rem;
     margin-bottom: 1rem;
   }
-  
-  .carouselWrapper {
+
+  .carouselInner {
     display: flex;
     gap: 1rem;
     cursor: grab;
