@@ -141,15 +141,39 @@
 }
 
 .confirmButton {
-  width: 100%;
-  padding: 1rem;
-  background-color: #d62828;
-  color: #fff;
+  /* Stile di base */
+  background-color: #d62828; /* Il colore rosso che abbiamo scelto */
+  color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px; /* Angoli più arrotondati per un look moderno */
+  padding: 12px 24px; /* Più spazio interno per renderlo più "importante" */
+  font-size: 1.1rem;
+  font-weight: bold;
   cursor: pointer;
-  font-size: 1.2rem;
-  font-family: 'Pirata One', system-ui; /* MODIFICATO */
+  width: 100%;
+  
+  /* Effetto ombra per dare profondità */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  
+  /* L'animazione per tutti i cambiamenti */
+  transition: all 0.3s ease;
+}
+
+/* Effetto al passaggio del mouse (hover) */
+.confirmButton:hover {
+  background-color: #e04444; /* Un rosso leggermente più chiaro */
+  
+  /* Il pulsante si solleva leggermente */
+  transform: translateY(-2px);
+  
+  /* L'ombra diventa più pronunciata */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Effetto quando viene premuto */
+.confirmButton:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Stili specifici per dispositivi mobili */

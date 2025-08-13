@@ -1,14 +1,27 @@
 // pages/_app.tsx
-import { AppProps } from 'next/app';
-import { CartProvider } from '../context/CartContext';
-import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import { NextIntlClientProvider } from 'next-intl';
+import { useRouter } from 'next/router';
 
-function MyApp({ Component, pageProps }: AppProps) {
+// Usiamo la scorciatoia '@/' che abbiamo configurato
+import { CartProvider } from '@/context/CartContext';
+import Layout from '@/components/Layout';
+import '@/styles/globals.css';
+
+export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+ 
   return (
     <CartProvider>
-      <Component {...pageProps} />
+      <NextIntlClientProvider
+        locale={router.locale}
+        timeZone="Europe/Rome" // Puoi cambiare il fuso orario se necessario
+        messages={pageProps.messages}
+      >
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </NextIntlClientProvider>
     </CartProvider>
   );
 }
-
-export default MyApp;

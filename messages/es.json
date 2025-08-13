@@ -1,0 +1,37 @@
+{
+  "Header": {
+    "returnToHome": "&larr; Volver a Inicio"
+  },
+  "Cart": {
+    "summaryTitle": "Resumen del Carrito",
+    "total": "Total",
+    "goToCheckout": "Ir a Pagar",
+    "emptyCart": "Tu carrito está vacío."
+  },
+  "HomePage": {
+    "title": "Trieste Sadness - Tienda de Arte Digital",
+    "logoText": "Trieste Sadness Shop",
+    "heroTitle": "Trieste Sadness Digital Art Shop",
+    "heroSubtitle": "Es un mundo triste en el que vivimos",
+    "heroDescription": "Artes digitales para gente triste hechas por un chico triste.",
+    "requestDrawing": "Dibujos por Encargo",
+    "galleriesTitle": "Galerías"
+  },
+  "GalleriaPage": {
+    "siteTitle": "Trieste Sadness Tienda de Arte Digital",
+    "notFound": "Galería no encontrada o imágenes faltantes.",
+    "addToCart": "Añadir al Carrito",
+    "enlargedImageAlt": "Imagen ampliada del producto"
+  },
+  "CheckoutPage": {
+    "pageTitle": "Checkout",
+    "mainTitle": "Checkout",
+    "orderSummaryTitle": "Tu Pedido",
+    "paymentDetailsTitle": "Detalles de Pago",
+    "emailLabel": "Dirección de correo electrónico",
+    "paymentMethodLabel": "Método de Pago",
+    "creditCard": "Tarjeta de Crédito",
+    "paypal": "PayPal",
+    "confirmButton": "Confirmar Pedido"
+  }
+}

@@ -1,53 +1,87 @@
 /* components/Header.module.css */
 
+/* Il contenitore principale che occupa tutta la larghezza */
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  /* Modifica questa riga per un effetto semi-trasparente */
   background-color: rgba(18, 18, 18, 0.8);
   color: #fff;
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Centra il contenuto interno */
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0 2rem;
   box-shadow: 0 2px 10px rgba(0,0,0,0.5);
   z-index: 999;
+  transition: background-color 0.3s ease;
 }
 
-.logo {
-  font-size: 1.5rem;
+/* Il contenitore interno che limita la larghezza e allinea il contenuto */
+.headerContent {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+/* Stile unico per il link a sinistra, per garantire la stessa dimensione */
+.logo,
+.backLink {
+  font-size: 1.8rem;
   font-weight: bold;
   color: #fff;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
+.logo:hover,
+.backLink:hover {
+  color: #ccc;
+}
+
+/* Contenitore per gli elementi a destra (lingua e carrello) */
 .nav {
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-.cartLink {
-  color: #fff;
-  text-decoration: none;
+/* --- MODIFICA APPLICATA QUI --- */
+/* Stili uniformi per i due pulsanti a destra */
+
+.langButton,
+.cartButton {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem; /* <-- Dimensione uniforme per entrambi */
   position: relative;
+  padding: 0;
   display: flex;
   align-items: center;
 }
 
-.cartIcon {
-  width: 28px;
-  height: 28px;
+.cartButton {
+  font-size: 1.5rem; /* L'icona emoji potrebbe richiedere una dimensione leggermente maggiore per apparire bilanciata */
 }
 
-.cartCount {
+/* Stile per il menu a tendina del carrello */
+.cartDropdown {
   position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: #d62828;
-  color: #fff;
-  border-radius: 50%;
-  padding: 2px 6px;
-  font-size: 0.8rem;
-  font-weight: bold;
+  top: 100%;
+  right: 0;
+  width: 300px;
+  background-color: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1rem;
+  padding-top: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  color: white;
+  text-align: left;
+  z-index: 2001;
 }

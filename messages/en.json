@@ -1,0 +1,37 @@
+{
+  "Header": {
+    "returnToHome": "&larr; Back to Home"
+  },
+  "Cart": {
+    "summaryTitle": "Cart Summary",
+    "total": "Total",
+    "goToCheckout": "Go to Checkout",
+    "emptyCart": "Your cart is empty."
+  },
+  "HomePage": {
+    "title": "Trieste Sadness - Digital Art Shop",
+    "logoText": "Trieste Sadness Shop",
+    "heroTitle": "Trieste Sadness Digital Art Shop",
+    "heroSubtitle": "It's a sad world we live in",
+    "heroDescription": "Digital arts for sad people made by a sad guy.",
+    "requestDrawing": "Custom Drawings",
+    "galleriesTitle": "The Galleries"
+  },
+  "GalleriaPage": {
+    "siteTitle": "Trieste Sadness Digital Art Shop",
+    "notFound": "Gallery not found or images missing.",
+    "addToCart": "Add to Cart",
+    "enlargedImageAlt": "Enlarged product image"
+  },
+  "CheckoutPage": {
+    "pageTitle": "Checkout",
+    "mainTitle": "Checkout",
+    "orderSummaryTitle": "Your Order",
+    "paymentDetailsTitle": "Payment Details",
+    "emailLabel": "Email address",
+    "paymentMethodLabel": "Payment method",
+    "creditCard": "Credit Card",
+    "paypal": "PayPal",
+    "confirmButton": "Confirm Order"
+  }
+}

@@ -1,31 +1,39 @@
 // pages/galleria/[slug].tsx
-'use client';
-
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Image from 'next/image';
-import { useCart } from '../../context/CartContext';
-import styles from './Galleria.module.css';
-import gallerie from '../../data/gallerie';
-import Link from 'next/link';
-import Header from '../../components/Header';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
+import pick from 'lodash/pick'; // <-- Importa la funzione 'pick'
+
+import { useCart } from '@/context/CartContext';
+import styles from './Galleria.module.css';
+import { gallerieData } from '@/data/gallerie-i18n.ts';
+
+// L'Header è gestito dal Layout globale in _app.tsx, quindi non serve importarlo qui
 
 const Galleria = () => {
   const router = useRouter();
-  const { slug } = router.query;
+  const { locale, query } = router;
+  const { slug } = query;
+  
+  const t = useTranslations('GalleriaPage');
+  const tHome = useTranslations('HomePage'); // Carichiamo anche HomePage per il titolo del sito
   const { addToCart } = useCart();
+  
+  const gallerie = gallerieData[locale] || gallerieData.it;
   const galleria = gallerie.find((g) => g.slug === slug);
-  const [modalProduct, setModalProduct] = useState(null);
+  
+  const [modalProduct, setModalProduct] = useState<any>(null); // Usiamo 'any' per semplicità o creiamo un tipo apposito
 
-  if (!slug) {
-    return null;
+  if (router.isFallback) {
+    return <div>Loading...</div>;
   }
   
   if (!galleria || !galleria.immaginiGalleria) {
     return (
       <div style={{ padding: '4rem', textAlign: 'center', color: 'white' }}>
-        <p>Galleria non trovata o immagini mancanti.</p>
+        <p>{t('notFound')}</p>
       </div>
     );
   }
@@ -38,12 +46,10 @@ const Galleria = () => {
   return (
     <>
       <Head>
-        <title>{galleria.nome} - Trieste Sadness Digital Arts Shop</title>
+        <title>{`${galleria.nome} - ${tHome('title')}`}</title>
       </Head>
       
-      <Header />
-
-      <main className={styles.main} style={{ paddingTop: '6rem' }}>
+      <main className={styles.main}>
         <h1 className={styles.title}>{galleria.nome}</h1>
         <p className={styles.description}>{galleria.description}</p>
         <div className={styles.grid}>
@@ -71,7 +77,7 @@ const Galleria = () => {
                   onClick={() => addToCart(item)}
                   className={styles.addToCartButton}
                 >
-                  Aggiungi al carrello
+                  {t('addToCart')}
                 </button>
               </div>
             </div>
@@ -93,7 +99,6 @@ const Galleria = () => {
                   style={{ objectFit: 'contain' }}
                 />
               </div>
-
               <div className={styles.modalDetails}>
                 <h2 className={styles.modalTitle}>{modalProduct.title}</h2>
                 <p className={styles.modalDescription}>{modalProduct.description}</p>
@@ -102,7 +107,7 @@ const Galleria = () => {
                   onClick={() => handleAddToCart(modalProduct)}
                   className={styles.modalAddToCartButton}
                 >
-                  Aggiungi al carrello
+                  {t('addToCart')}
                 </button>
               </div>
             </div>
@@ -112,5 +117,35 @@ const Galleria = () => {
     </>
   );
 };
+
+// --- FUNZIONI OBBLIGATORIE PER PAGINE DINAMICHE E TRADOTTE ---
+
+export async function getStaticPaths({ locales }) {
+  const paths = [];
+  for (const locale of locales) {
+    const gallerie = gallerieData[locale] || gallerieData.it;
+    for (const galleria of gallerie) {
+      paths.push({
+        params: { slug: galleria.slug },
+        locale,
+      });
+    }
+  }
+  return {
+    paths,
+    fallback: false, 
+  };
+}
+
+// --- FUNZIONE MODIFICATA PER CARICARE SOLO LE TRADUZIONI NECESSARIE ---
+export async function getStaticProps({locale}) {
+  const messages = (await import(`@/messages/${locale}.json`)).default;
+  return {
+    props: {
+      // Passiamo le sezioni per la Galleria, l'Header, e il Carrello
+      messages: pick(messages, ['GalleriaPage', 'HomePage', 'Header', 'Cart'])
+    }
+  };
+}
 
 export default Galleria;
